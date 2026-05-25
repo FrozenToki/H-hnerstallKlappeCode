@@ -16,6 +16,9 @@ Motor* motor;
 
 
 
+void serialSendLoop() {
+
+}
 
 
 void startSerialConnection(bool fastBaudRate, bool waitForConnection) {
@@ -31,6 +34,7 @@ void startSerialConnection(bool fastBaudRate, bool waitForConnection) {
 	}
 	delay(2000);
 	Serial.println("Connection established");
+
 }
 
 void modeOne() {
@@ -46,9 +50,11 @@ void modeTwo() {
 	buttonC->update();
 	if (buttonC->pressed(1)) {
 		motor->turnOn(speed / 10);
+		app->getSerialValuePool().set("Motor","turning Left");
 	}
 	else if (buttonC->pressed(3)) {
 		motor->turnOn(-(speed / 10));
+		app->getSerialValuePool().set("Motor","turning Right");
 	}
 	else if (buttonC->pressed(2)) {
 		while(buttonC->pressed(2)) {
@@ -65,6 +71,7 @@ void modeTwo() {
 				}
 				if (speed != 0) {
 					speed--;
+					app->getSerialValuePool().set("Motor Speed",speed);
 				}
 				
 			}
@@ -74,6 +81,7 @@ void modeTwo() {
 				}
 				if (speed != 10) {
 					speed++;
+					app->getSerialValuePool().set("Motor Speed",speed);
 				}
 			}
 
@@ -85,12 +93,15 @@ void modeTwo() {
 		
 	}
 	else {
+		app->getSerialValuePool().set("Motor","not Turning");
 		motor->turnOff();
 	}
 }
 
 
 void setup() {
+	app->getSerialValuePool().set("Motor","not Turning");
+	app->getSerialValuePool().set("Motor Speed",speed);
 
 	
 
@@ -120,6 +131,6 @@ void setup() {
 float i = 0;
 void loop() {	 
 	app->getMenuManager().loop();
-
+	app->getSerialComm().sendingLoop();
 }
 

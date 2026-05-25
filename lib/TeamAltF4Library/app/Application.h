@@ -15,6 +15,7 @@
 #include "Sensorik/IrSensorReader/IrSensorReader.h"
 #include "MenuManager/MenuManager.h"
 #include "Sensorik/Calibration/Calibration.h"
+#include "Serial/ValuePool/SerialValuePool.h"
 
 // Used to get acces to all the parts of the library from anywhere in the programm.
 // It has instances of all the different main parts of the library.
@@ -33,6 +34,7 @@ private:
 	DrivingControl drivingControl;
 	RotationControl rotationControl;
 
+	SerialValuePool serialValuePool;
 	SerialComm serialComm;
 
 	Geometry geometry;
@@ -58,6 +60,7 @@ public:
 	DrivingControl& getDrivingControl();
 	RotationControl& getRotationControl();
 
+	SerialValuePool& getSerialValuePool();
 	SerialComm& getSerialComm();
 
 	Geometry& getGeometry();

@@ -13,15 +13,7 @@ private:
 	char sendBuffer[512];    
 	String sendString;  																							
 
-	unsigned int maxSensorValues = 10;
-	unsigned int maxOtherValues = 11;
-	
-
-	std::vector<String*> otherStuff;
-	std::vector<SensorBase*> sensors;
-
-	std::vector<float*> otherValues;
-	std::vector<String> otherValuesNames;
+	int sendingProgress = 0;
 
 	Stream& serial;
 
@@ -31,23 +23,22 @@ private:
 	unsigned long lastSendTimeOneTime = 0;
 	unsigned long oneTimeSendInterval; 
 
+	bool serialCommSending = false;
+
 public:
-    SerialComm(Application* a, Stream& ser = Serial, unsigned long RepeatingSendInterval = 100, unsigned long OneTimeSendInterval = 500);
+	SerialComm(Application* a, Stream& ser = Serial, unsigned long RepeatingSendInterval = 100, unsigned long OneTimeSendInterval = 500);
+	void sendRepeatingData(); 
+	void sendOneTimeData(); 
+	
 
-    void addSensor(SensorBase* sensor);
-    void addOtherValue(float& refVar, String name);
-    void addOtherStuff(String& refStr);
+	void sendOtherValues();
+	void sendOtherValuesNames();
 
-    void sendRepeatingData(); // aufrufen in loop()
-    void sendOneTimeData(); // einmalig aufrufen in setup()
-    
-    void sendSensorValues();
-    void sendOtherValues();
-    void sendOtherStuff();
 
-    void sendSensorNames();
-    void sendOtherValuesNames();
-    void sendSensorPins();
+	void sendValueAsChar(String text, char* charrr,size_t bufferSize,bool newLine = true);
 
-    void sendValueAsChar(String text, char* charrr,size_t bufferSize,bool newLine = true);
+	void enableSerialComm();
+	void disableSerialComm();
+	
+	void sendingLoop();
 };

@@ -37,7 +37,12 @@ RotationControl& Application::getRotationControl() {
 	return rotationControl;
 }
 
-SerialComm& Application::getSerialComm() {
+SerialValuePool &Application::getSerialValuePool() {
+	return serialValuePool;
+}
+
+SerialComm &Application::getSerialComm()
+{
 	return serialComm;
 }
 
