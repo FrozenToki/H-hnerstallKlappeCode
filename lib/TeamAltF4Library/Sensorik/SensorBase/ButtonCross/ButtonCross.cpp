@@ -9,6 +9,8 @@ ButtonCross::ButtonCross(String n, int p, float v1, float v2, float v3, float v4
 	setValues[3] = v4;
 	setValues[4] = v5;
 	pinMode(p, INPUT);
+
+	
 }
 
 void ButtonCross::update() {

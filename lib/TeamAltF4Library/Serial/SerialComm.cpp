@@ -12,7 +12,7 @@ void SerialComm::sendRepeatingData() {
 	unsigned long currentMillis = millis();
 	if (currentMillis - lastSendTimeRepeating >= repeatingSendInterval) {
 		lastSendTimeRepeating = currentMillis;
-		sendString = ""; 
+		sendString = "," + String(sendingProgress) + ","; 
 		sendOtherValues();
 		sendValueAsChar(sendString, sendBuffer, sizeof(sendBuffer));
 	}

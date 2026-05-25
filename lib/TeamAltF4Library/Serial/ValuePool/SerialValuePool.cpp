@@ -7,7 +7,7 @@ void SerialValuePool::set(const String &name, const String &value) {
 			return;
 		}
 	}
-	pool.push_back({value,name});
+	pool.push_back({name, value});
 }
 
 void SerialValuePool::set(const String &name, int value) {
@@ -16,6 +16,10 @@ void SerialValuePool::set(const String &name, int value) {
 
 void SerialValuePool::set(const String &name, float value) {
  	set(name, String(value, 2));
+}
+
+void SerialValuePool::set(const String &name, const char* value) {
+  set(name, String(value));
 }
 
 void SerialValuePool::set(const String &name, bool value) {

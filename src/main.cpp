@@ -15,12 +15,6 @@ Motor* motor;
 
 
 
-
-void serialSendLoop() {
-
-}
-
-
 void startSerialConnection(bool fastBaudRate, bool waitForConnection) {
 	if(fastBaudRate) {
 		Serial.begin(115200);
@@ -100,19 +94,22 @@ void modeTwo() {
 
 
 void setup() {
-	app->getSerialValuePool().set("Motor","not Turning");
-	app->getSerialValuePool().set("Motor Speed",speed);
-
 	
 
 	
 
 	
-	// startSerialConnection(false,false);
+	startSerialConnection(false,true);
 
 	
 	app = new Application(); // JETZT erst initialisieren
     Serial.println("App erstellt");
+	
+	app->getSerialValuePool().set("Motor","not Turning");
+	app->getSerialValuePool().set("Motor Speed",speed);
+
+	app->getSerialComm().enableSerialComm();
+
 	
 
 	buttonC = app->getSensorManager().getButtonCrossByName(Config::BUTTON_CROSS_NAME);
