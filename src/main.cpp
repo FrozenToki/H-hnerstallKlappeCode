@@ -102,7 +102,7 @@ void setup() {
 	startSerialConnection(false,true);
 
 	
-	app = new Application(); // JETZT erst initialisieren
+	app = new Application(); 
     Serial.println("App erstellt");
 	
 	app->getSerialValuePool().set("Motor","not Turning");

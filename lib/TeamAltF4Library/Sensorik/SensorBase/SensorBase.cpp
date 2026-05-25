@@ -1,6 +1,6 @@
 #include "SensorBase.h"
 
-SensorBase::SensorBase(int p, String n) : pin(p), value(0.0f), name(n) {}
+SensorBase::SensorBase(int p, String n, Application* a) : pin(p), value(0.0f), name(n), app(a){}
 
 String SensorBase::BUTTON = "Btn";
 String SensorBase::BNO055 = "Gyro";

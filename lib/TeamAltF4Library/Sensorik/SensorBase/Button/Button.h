@@ -6,7 +6,7 @@
 class Button : public SensorBase {
 private:
 public:
-	Button (int p,String n);
+	Button (int p,String n, Application* a);
 	void update() override;
 	float rawData() override;
 	bool isPressed() const;

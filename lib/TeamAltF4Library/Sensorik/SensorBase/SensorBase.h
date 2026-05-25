@@ -1,6 +1,8 @@
 #pragma once
 #include <Arduino.h>
 
+class Application;
+
 // Used to create all
 class SensorBase {
 protected:
@@ -8,10 +10,13 @@ protected:
 	float value;
 	String name;
 	String type;
+	Application* app;
+	
 private:
 	static int sensorCount;
+	
 public:
-	SensorBase(int p,String n);
+	SensorBase(int p,String n, Application* a);
 
   static String BUTTON;
 	static String BNO055;

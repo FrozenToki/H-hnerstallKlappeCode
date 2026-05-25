@@ -18,7 +18,7 @@ private:
 	boolean newData = false;
 
 public:
-	IrRing(String n);
+	IrRing(String n, Application* a);
 	void update() override;
 	void recvWithStartEndMarkers();
 	void parseData();

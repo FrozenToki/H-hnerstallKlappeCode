@@ -1,6 +1,6 @@
 #include "EZ.h"
 
-EZ::EZ(int p, String n) : SensorBase(p, n) {
+EZ::EZ(int p, String n, Application* a) : SensorBase(p, n, a) {
 	pinMode(pin, INPUT);
 }
 

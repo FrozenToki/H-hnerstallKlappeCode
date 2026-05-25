@@ -10,7 +10,7 @@ private:
 	float calculatedValue;
 
 public:
-	IrSensor(int p, String n, float a);
+	IrSensor(int p, String n, float a, Application* b);
 	void update() override;
 	float rawData() override;
 	float getCalculatedValue();

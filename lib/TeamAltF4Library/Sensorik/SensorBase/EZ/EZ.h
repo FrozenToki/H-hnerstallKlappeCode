@@ -6,7 +6,7 @@ class EZ : public SensorBase {
 	private: 
 
 	public:
-		EZ(int p, String n);
+		EZ(int p, String n, Application* a);
 		void update() override;
 		float rawData() override;
 		

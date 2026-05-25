@@ -9,7 +9,7 @@ class Sr04 : public SensorBase {
 		int pinTrig;
 		int pinEcho;
 	public:
-		Sr04(int pinT, int pinE, String n);
+		Sr04(int pinT, int pinE, String n, Application* a);
 		void update() override;
 		float rawData() override;
 		

@@ -1,6 +1,6 @@
 #include "IrRing.h"
 
-IrRing::IrRing(String n) : SensorBase(0, n) {
+IrRing::IrRing(String n, Application* a) : SensorBase(0, n, a) {
 	Serial.begin(115200);
 }
 // https://forum.arduino.cc/t/serial-input-basics-updated/382007/3

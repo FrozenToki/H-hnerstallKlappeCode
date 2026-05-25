@@ -3,6 +3,8 @@
 #include <vector>
 #include "Sensorik/SensorBase/SensorBase.h"
 
+class Application;
+
 class ButtonCross : public SensorBase {
 private:
 	int press = -1;
@@ -12,7 +14,7 @@ private:
 
 	int tolerance = 15;	
 public: 	
-	ButtonCross(String n, int p, float v1, float v2, float v3, float v4, float v5);
+	ButtonCross(String n, int p, float v1, float v2, float v3, float v4, float v5, Application* a);
 	void update() override;
 	float rawData() override;
 	bool pressed(int i);

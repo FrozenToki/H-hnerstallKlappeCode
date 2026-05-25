@@ -1,7 +1,8 @@
 #include "ButtonCross.h"
+#include "app/Application.h"
 
-ButtonCross::ButtonCross(String n, int p, float v1, float v2, float v3, float v4, float v5) 
-: SensorBase(p, n) {
+ButtonCross::ButtonCross(String n, int p, float v1, float v2, float v3, float v4, float v5,Application* a) 
+: SensorBase(p, n, a) {
 	setValues.resize(5);
 	setValues[0] = v1;
 	setValues[1] = v2;
@@ -10,7 +11,7 @@ ButtonCross::ButtonCross(String n, int p, float v1, float v2, float v3, float v4
 	setValues[4] = v5;
 	pinMode(p, INPUT);
 
-	
+	app->getSerialValuePool().set("Button C", press);
 }
 
 void ButtonCross::update() {
@@ -25,6 +26,7 @@ void ButtonCross::update() {
 		
 			}
 		}
+		app->getSerialValuePool().set("Button C", press);
 	}
 	
 	
